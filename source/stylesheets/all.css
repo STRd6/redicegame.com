@@ -332,6 +332,10 @@ footer a:hover {
   float: right;
 }
 
+.right_content {
+  text-align: right;
+}
+
 /* MISC */
 .clearfix:after {
   clear: both;
