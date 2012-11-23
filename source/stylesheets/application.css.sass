@@ -1,0 +1,21 @@
+@import "all.css"
+@import "sassy-buttons"
+
+button
+  @include sassy-button
+
+form
+  background: transparent
+  padding: 0
+  padding-bottom: 20px
+
+  input
+    font-size: 14px
+    padding: 8px
+    width: 240px
+
+p:empty
+  margin: 0
+
+p.error
+  color: red
