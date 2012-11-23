@@ -1,0 +1,60 @@
+%section
+  %h3 Welcome 2 Mayhem!
+  %p
+    Red Ice is a fast paced 3v3 hockey game. Use your wits and hockey sticks to crush your opponents.
+  = image_tag "web200_2.png", :class => :right
+  %p
+    Captain one of six twisted teams to victory.
+
+    %ul
+      %li Winnipeg Beach Winnies
+      %li Urbandale Umbos
+      %li Sunset Valley Nightengales
+      %li Sunnyvale Snakemen
+      %li The Creatures from Mt. Pleasant
+      %li Unknown from who knows where
+
+%section.right_content
+  = image_tag "web200.png", :class => :left, :style => "padding-right: 20px;"
+  %h3 Features!!1
+  %p
+    Gameplay &#x2713;
+  %p
+    Images &#x2713;
+  %p
+    Sound &#x2713;
+  %p
+    Music &#x2713;
+
+%section
+  %h3 More Info
+  %p
+    Target release date 12-31-12.
+  %p
+    Available on all platforms (Win, Mac, Linux)
+
+  %h3 Subscribe for More Information
+  %form(action="http://payments.pixieengine.com/leads")
+    %p.error
+    %label
+      %input(type="email" placeholder="Email Address" name="lead[email]")
+      %input(type="hidden" name="lead[product]" value="Red Ice")
+      %button OK!
+
+%section#downloads.clearfix
+  %h3 Links and Downloads
+  %a#view-on-github.button{:href => "https://github.com/STRd6/Hockey-Densetsu"}
+    %span View on GitHub
+  %a#download-zip.button{:href => "https://github.com/STRd6/Hockey-Densetsu/zipball/pixie"}
+    %span Download Alpha
+
+%section
+  %h3 Contact
+  %p
+    I'm eager to hear what you think.
+    Please let me know if you have any ideas, suggestions, or problems playing the game.
+    Email me directly at
+    %a{:href => "mailto:daniel@pixieengine.com"} daniel@pixieengine.com
+
+%section
+  = image_tag "web620_2.png"
