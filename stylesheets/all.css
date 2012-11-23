@@ -99,10 +99,6 @@ header h2 {
   max-width: 100%;
 }
 
-#downloads {
-  margin-bottom: 40px;
-}
-
 a.button {
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -366,9 +362,7 @@ footer a:hover {
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  #downloads {
-    margin-bottom: 25px;
-  }
+
   .inner {
     width: 94%;
     margin: 0 auto;

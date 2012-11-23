@@ -53,20 +53,42 @@ button {
     margin: -1px !important; }
 
 /* line 7, application.css.sass */
+header {
+  position: relative; }
+  /* line 10, application.css.sass */
+  header form.subscribe {
+    position: absolute;
+    top: 20px;
+    right: 0; }
+    /* line 15, application.css.sass */
+    header form.subscribe h3 {
+      color: #303030;
+      margin: 0; }
+
+/* line 19, application.css.sass */
 form {
   background: transparent;
-  padding: 0;
-  padding-bottom: 20px; }
-  /* line 12, application.css.sass */
+  padding: 0; }
+  /* line 23, application.css.sass */
   form input {
     font-size: 14px;
     padding: 8px;
-    width: 240px; }
+    width: 220px; }
+    /* line 28, application.css.sass */
+    form input.card-expiry-month {
+      width: 64px; }
+    /* line 31, application.css.sass */
+    form input.card-expiry-year {
+      width: 128px; }
+  /* line 34, application.css.sass */
+  form label {
+    display: block;
+    margin-bottom: 20px; }
 
-/* line 17, application.css.sass */
+/* line 38, application.css.sass */
 p:empty {
   margin: 0; }
 
-/* line 20, application.css.sass */
+/* line 41, application.css.sass */
 p.error {
   color: red; }

@@ -1,15 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <meta charset='utf-8' />
-    <meta content='chrome=1' http-equiv='X-UA-Compatible' />
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css' />
-    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Red Ice by STRd6</title>
-  </head>
+  <meta charset='utf-8' />
+  <meta content='chrome=1' http-equiv='X-UA-Compatible' />
+  <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css' />
+  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Red Ice by STRd6</title>
+</head>
   <body>
     <div id='container'>
       <div class='inner'>
@@ -17,9 +17,20 @@
           <h1>Red Ice</h1>
           <h2>The hockey game that bleeds fun!</h2>
           <img src="/images/web620.png" />
+          <!-- = partial "subscribe_form" -->
         </header>
         <hr />
-        <section id='main_content'>
+        <section>
+          <p class='clearfix'>
+            <a class='button' href='https://github.com/STRd6/Hockey-Densetsu' id='view-on-github'>
+              <span>View on GitHub</span>
+            </a>
+            <a class='button' href='https://github.com/STRd6/Hockey-Densetsu/zipball/pixie' id='download-zip'>
+              <span>Download Alpha</span>
+            </a>
+          </p>
+        </section>
+        <section>
           <h3>Welcome 2 Mayhem!</h3>
           <p>
             Red Ice is a fast paced 3v3 hockey game. Use your wits and hockey sticks to crush your opponents.
@@ -31,26 +42,10 @@
               <li>Winnipeg Beach Winnies</li>
               <li>Urbandale Umbos</li>
               <li>Sunset Valley Nightengales</li>
-              <li>Sunnyvale Snakemen</li>
+              <li>Sunnyvale Serpentmen</li>
               <li>The Creatures from Mt. Pleasant</li>
               <li>Unknown from who knows where</li>
             </ul>
-          </p>
-        </section>
-        <section class='right_content'>
-          <img class="left" style="padding-right: 20px;" src="/images/web200.png" />
-          <h3>Features!!1</h3>
-          <p>
-            Gameplay &#x2713;
-          </p>
-          <p>
-            Images &#x2713;
-          </p>
-          <p>
-            Sound &#x2713;
-          </p>
-          <p>
-            Music &#x2713;
           </p>
         </section>
         <section>
@@ -61,24 +56,24 @@
           <p>
             Available on all platforms (Win, Mac, Linux)
           </p>
-          <h3>Subscribe for More Information</h3>
-          <form action='http://payments.pixieengine.com/leads'>
+          <form action='http://payments.pixieengine.com/leads' class='subscribe'>
+            <input name='lead[product]' type='hidden' value='Red Ice' />
             <p class='error'></p>
             <label>
+              <h4>Subscribe to our mailing list to stay up to date</h4>
               <input name='lead[email]' placeholder='Email Address' type='email' />
-              <input name='lead[product]' type='hidden' value='Red Ice' />
               <button>OK!</button>
             </label>
           </form>
         </section>
-        <section class='clearfix' id='downloads'>
-          <h3>Links and Downloads</h3>
-          <a class='button' href='https://github.com/STRd6/Hockey-Densetsu' id='view-on-github'>
-            <span>View on GitHub</span>
-          </a>
-          <a class='button' href='https://github.com/STRd6/Hockey-Densetsu/zipball/pixie' id='download-zip'>
-            <span>Download Alpha</span>
-          </a>
+        <section>
+          <h3>Serpentman Diet & Health</h3>
+          <img class="right" src="/images/web200.png" />
+          <p>Once, it was believed that a Serpentman ate and lived only on fish. Today we know that nothing could be further from truth. Our winged friends need much more than just fish to sustain. A healthy Serpentman diet should consist of all the basic nutrients, vitamins and minerals needed to keep your Serpentman healthy.</p>
+          
+          <p>If you are feeding your friend only fish then it is time to change that. Of course your snake loves it but it&#8217;s really not healthy. Fish contain too much fat and that&#8217;s not good for your Serpentman. A perfect diet should be one of fresh vegetables, pellets, fruits and a little amount of fish.</p>
+          
+          <p>Also add vitamin and mineral supplements to your Serpentman&#8217;s diet. You can either mix them with your Serpentman&#8217;s food or mix them in the water.</p>
         </section>
         <section>
           <h3>Contact</h3>
@@ -103,10 +98,9 @@
       //<![CDATA[
         (function() {
     
-      $("form").on("submit", function() {
+      $("form.subscribe").on("submit", function() {
         var $form, email, emailValidator, url, valid;
         $form = $(this);
-        console.log($form.serialize());
         email = $form.find("[type=email]").val().trim();
         emailValidator = /.+\@.+\..+/;
         valid = email.match(emailValidator);
