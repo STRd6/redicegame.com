@@ -4,7 +4,7 @@
     <meta charset='utf-8' />
     <meta content='chrome=1' http-equiv='X-UA-Compatible' />
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css' />
-    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -18,19 +18,6 @@
           <h2>The hockey game that bleeds fun!</h2>
           <img src="/images/web620.png" />
         </header>
-        <!--
-          <section class='clearfix' id='downloads'>
-            <a class='button' href='https://github.com/STRd6/redicegame.com/zipball/master' id='download-zip'>
-              <span>Download .zip</span>
-            </a>
-            <a class='button' href='https://github.com/STRd6/redicegame.com/tarball/master' id='download-tar-gz'>
-              <span>Download .tar.gz</span>
-            </a>
-            <a class='button' href='https://github.com/STRd6/redicegame.com' id='view-on-github'>
-              <span>View on GitHub</span>
-            </a>
-          </section>
-        -->
         <hr />
         <section id='main_content'>
           <h3>Welcome 2 Mayhem!</h3>
@@ -74,8 +61,27 @@
           <p>
             Available on all platforms (Win, Mac, Linux)
           </p>
+          <h3>Subscribe for More Information</h3>
+          <form action='http://payments.pixieengine.com/leads'>
+            <p class='error'></p>
+            <label>
+              <input name='lead[email]' placeholder='Email Address' type='email' />
+              <input name='lead[product]' type='hidden' value='Red Ice' />
+              <button>OK!</button>
+            </label>
+          </form>
           <h3>Preorder</h3>
           <p>Information about preordering coming soon!</p>
+        </section>
+        <section class='clearfix' id='downloads'>
+          <a class='button' href='https://github.com/STRd6/Hockey-Densetsu/zipball/pixie' id='download-zip'>
+            <span>Download Alpha</span>
+          </a>
+          <a class='button' href='https://github.com/STRd6/Hockey-Densetsu' id='view-on-github'>
+            <span>View on GitHub</span>
+          </a>
+        </section>
+        <section>
           <h3>Contact</h3>
           <p>
             <a href='mailto:daniel@pixieengine.com'>daniel@pixieengine.com</a>
@@ -90,5 +96,31 @@
         </footer>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+        (function() {
+    
+      $("form").on("submit", function() {
+        var $form, email, emailValidator, url, valid;
+        $form = $(this);
+        console.log($form.serialize());
+        email = $form.find("[type=email]").val().trim();
+        emailValidator = /.+\@.+\..+/;
+        valid = email.match(emailValidator);
+        if (valid) {
+          $form.replaceWith("<p>Thanks, we'll keep you up to date with information about the game!</p>");
+          url = $form.attr("action") + "?callback=?";
+          $.getJSON(url, $form.serialize());
+        } else {
+          $form.find('.error').text("Please enter a valid email address.");
+        }
+        return false;
+      });
+    
+    }).call(this);
+    
+      //]]>
+    </script>
   </body>
 </html>
