@@ -4,15 +4,36 @@
 button
   @include sassy-button
 
+header
+  position: relative
+
+  form.subscribe
+    position: absolute
+    top: 20px
+    right: 0
+
+    h3
+      color: #303030
+      margin: 0
+
 form
   background: transparent
   padding: 0
-  padding-bottom: 20px
 
   input
     font-size: 14px
     padding: 8px
-    width: 240px
+    width: 220px
+
+    &.card-expiry-month
+      width: 64px
+
+    &.card-expiry-year
+      width: 128px
+
+  label
+    display: block
+    margin-bottom: 20px
 
 p:empty
   margin: 0

@@ -1,0 +1,19 @@
+%section
+  %h3 Preorder Now
+
+  %form#payment-form{:action => "", :method => "POST"}
+    %label
+      %h4 Card Number
+      %input.card-number{:autocomplete => "off", :size => "20", :type => "text"}
+
+    %label
+      %h4 CVC
+      %input.card-cvc{:autocomplete => "off", :size => "4", :type => "text"}
+
+    %label
+      %h4 Expiration (MM/YYYY)
+      %input.card-expiry-month{:size => "2", :type => "text"}
+      %span /
+      %input.card-expiry-year{:size => "4", :type => "text"}
+
+    %button.submit-button{:type => "submit"} Submit Payment
