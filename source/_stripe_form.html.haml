@@ -3,6 +3,14 @@
 
   %form#payment-form{:action => "", :method => "POST"}
     %label
+      %h4 Name
+      %input(name="name")
+
+    %label
+      %h4 Email
+      %input(name="email")
+
+    %label
       %h4 Card Number
       %input.card-number{:autocomplete => "off", :size => "20", :type => "text"}
 
@@ -16,4 +24,46 @@
       %span /
       %input.card-expiry-year{:size => "4", :type => "text"}
 
-    %button.submit-button{:type => "submit"} Submit Payment
+    %button(type="submit") Submit Payment
+
+- content_for :scripts do
+  <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+
+  :coffeescript
+    $ ->
+      Stripe.setPublishableKey('pk_test_VzaTm4NaT9nrZZ94WM8tqmDb')
+
+      $("#payment-form").submit (event) ->
+        $form = $(this)
+
+        # TODO Inline validation of everything
+
+        email = $form.find("[name=email]").val()
+        name = $form.find("[name=name]").val()
+
+        # TODO Validate email
+
+        # disable the submit button to prevent repeated clicks
+        $form.find('button[type=submit]').attr("disabled", "disabled")
+
+        Stripe.createToken
+          number: $form.find('.card-number').val()
+          cvc: $form.find('.card-cvc').val()
+          exp_month: $form.find('.card-expiry-month').val()
+          exp_year: $form.find('.card-expiry-year').val()
+        , (status, response) ->
+          # Re-enable submit button
+          $form.find('button[type=submit]').removeAttr("disabled")
+
+          if response.error
+            alert(response.error.message)
+          else
+            $.post "http://payments.pixieengine.com/purchases",
+              purchase:
+                product: "Red Ice - Preorder"
+                name: name
+                email: email
+                token: response.id
+
+        # prevent the form from submitting with the default action
+        return false
