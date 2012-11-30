@@ -76,24 +76,31 @@ form {
     width: 220px; }
     /* line 28, application.css.sass */
     form input.card-expiry-month {
-      width: 64px; }
+      width: 62px; }
     /* line 31, application.css.sass */
     form input.card-expiry-year {
-      width: 128px; }
+      width: 124px; }
   /* line 34, application.css.sass */
+  form .slot {
+    margin-bottom: 20px; }
+  /* line 37, application.css.sass */
   form label {
     display: block;
     margin-bottom: 20px; }
+    /* line 41, application.css.sass */
+    form label.inline {
+      display: inline;
+      margin-bottom: 0; }
 
-/* line 38, application.css.sass */
+/* line 45, application.css.sass */
 p:empty {
-  margin: 0; }
+  display: none; }
 
-/* line 41, application.css.sass */
+/* line 48, application.css.sass */
 p.error {
   color: red; }
 
-/* line 44, application.css.sass */
+/* line 51, application.css.sass */
 p.success {
   border: 1px solid;
   padding: 8px;

@@ -36,6 +36,7 @@
         <section>
   <h3>Preorder Now, only $15!</h3>
   <p>Target release date 12-31-12</p>
+  <p class='success'></p>
   <form action='' id='payment-form' method='POST'>
     <label>
       <h4>Name</h4>
@@ -53,12 +54,16 @@
       <h4>CVC</h4>
       <input autocomplete='off' class='card-cvc' size='4' type='text' />
     </label>
-    <label>
+    <div class='slot'>
       <h4>Expiration (MM/YYYY)</h4>
-      <input class='card-expiry-month' size='2' type='text' />
+      <label class='inline'>
+        <input class='card-expiry-month' size='2' type='text' />
+      </label>
       <span>/</span>
-      <input class='card-expiry-year' size='4' type='text' />
-    </label>
+      <label class='inline'>
+        <input class='card-expiry-year' size='4' type='text' />
+      </label>
+    </div>
     <button type='submit'>Preorder Now!</button>
   </form>
 </section>
@@ -76,7 +81,7 @@
     (function() {
 
   $(function() {
-    Stripe.setPublishableKey('pk_test_VzaTm4NaT9nrZZ94WM8tqmDb');
+    Stripe.setPublishableKey('pk_live_BLpii8gyz1bp825iJ7NLnvSA');
     return $("#payment-form").submit(function(event) {
       var $form, email, name;
       $form = $(this);
@@ -93,6 +98,13 @@
         if (response.error) {
           return alert(response.error.message);
         } else {
+          $form.parent().find("p.success").slideDown("slow", function() {
+            return $form.fadeOut(1000);
+          }).html('\
+          Thank you for your purchase! You will receive a confirmation email shortly.\
+          If you have any questions, comments, or concerns please email\
+          <a href="mailto:daniel@pixieengine.com">daniel@pixieengine.com</a>\
+        ');
           return $.post("http://payments.pixieengine.com/purchases", {
             purchase: {
               product: "Red Ice - Preorder",
