@@ -57,7 +57,7 @@
           class: "success"
         ).fadeIn('slow')
 
-        url = $form.attr("action") + "?callback=?"
+        url = $form.attr("action")
         $.post url, $form.serialize()
 
       else
