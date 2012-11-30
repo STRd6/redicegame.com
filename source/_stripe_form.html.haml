@@ -1,5 +1,7 @@
 %section
-  %h3 Preorder Now
+  %h3 Preorder Now, only $15!
+
+  %p Target release date 12-31-12
 
   %form#payment-form{:action => "", :method => "POST"}
     %label
@@ -8,7 +10,7 @@
 
     %label
       %h4 Email
-      %input(name="email")
+      %input(name="email" type="email")
 
     %label
       %h4 Card Number
@@ -24,7 +26,7 @@
       %span /
       %input.card-expiry-year{:size => "4", :type => "text"}
 
-    %button(type="submit") Submit Payment
+    %button(type="submit") Preorder Now!
 
 - content_for :scripts do
   <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
