@@ -71,6 +71,7 @@
             <p class='error'></p>
             <label>
               <h4>Subscribe to our mailing list to stay up to date</h4>
+              <!-- %input(type="text" placeholder="Name" name="lead[name]") -->
               <input name='lead[email]' placeholder='Email Address' type='email' />
               <button>OK!</button>
             </label>
@@ -115,9 +116,13 @@
         emailValidator = /.+\@.+\..+/;
         valid = email.match(emailValidator);
         if (valid) {
-          $form.replaceWith("<p>Thanks, we'll keep you up to date with information about the game!</p>");
+          $form.fadeOut(1000, function() {});
+          $form.replaceWith($("<p>", {
+            text: "Thanks, we'll keep you up to date with information about the game!",
+            "class": "success"
+          }).fadeIn('slow'));
           url = $form.attr("action") + "?callback=?";
-          $.getJSON(url, $form.serialize());
+          $.post(url, $form.serialize());
         } else {
           $form.find('.error').text("Please enter a valid email address.");
         }

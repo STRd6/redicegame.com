@@ -92,3 +92,10 @@ p:empty {
 /* line 41, application.css.sass */
 p.error {
   color: red; }
+
+/* line 44, application.css.sass */
+p.success {
+  border: 1px solid;
+  padding: 8px;
+  background-color: lightyellow;
+  color: darkgreen; }

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+  <meta charset='utf-8' />
+  <meta content='chrome=1' http-equiv='X-UA-Compatible' />
+  <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css' />
+  <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <title>Red Ice by STRd6</title>
+</head>
+  <body>
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36566583-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+    <div id='container'>
+      <div class='inner'>
+        <header>
+          <h1>Red Ice</h1>
+          <h2>The hockey game that bleeds fun!</h2>
+          <img src="/images/web620.png" />
+          <!-- = partial "subscribe_form" -->
+        </header>
+        <hr />
+        <section>
+  <h3>Preorder Now, only $15!</h3>
+  <p>Target release date 12-31-12</p>
+  <form action='' id='payment-form' method='POST'>
+    <label>
+      <h4>Name</h4>
+      <input name='name' />
+    </label>
+    <label>
+      <h4>Email</h4>
+      <input name='email' />
+    </label>
+    <label>
+      <h4>Card Number</h4>
+      <input autocomplete='off' class='card-number' size='20' type='text' />
+    </label>
+    <label>
+      <h4>CVC</h4>
+      <input autocomplete='off' class='card-cvc' size='4' type='text' />
+    </label>
+    <label>
+      <h4>Expiration (MM/YYYY)</h4>
+      <input class='card-expiry-month' size='2' type='text' />
+      <span>/</span>
+      <input class='card-expiry-year' size='4' type='text' />
+    </label>
+    <button type='submit'>Preorder Now!</button>
+  </form>
+</section>
+        <footer>
+          Red Ice is created by
+          <a href='https://github.com/STRd6'>STRd6</a>
+        </footer>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    (function() {
+
+  $(function() {
+    Stripe.setPublishableKey('pk_test_VzaTm4NaT9nrZZ94WM8tqmDb');
+    return $("#payment-form").submit(function(event) {
+      var $form, email, name;
+      $form = $(this);
+      email = $form.find("[name=email]").val();
+      name = $form.find("[name=name]").val();
+      $form.find('button[type=submit]').attr("disabled", "disabled");
+      Stripe.createToken({
+        number: $form.find('.card-number').val(),
+        cvc: $form.find('.card-cvc').val(),
+        exp_month: $form.find('.card-expiry-month').val(),
+        exp_year: $form.find('.card-expiry-year').val()
+      }, function(status, response) {
+        $form.find('button[type=submit]').removeAttr("disabled");
+        if (response.error) {
+          return alert(response.error.message);
+        } else {
+          return $.post("http://payments.pixieengine.com/purchases", {
+            purchase: {
+              product: "Red Ice - Preorder",
+              name: name,
+              email: email,
+              token: response.id
+            }
+          });
+        }
+      });
+      return false;
+    });
+  });
+
+}).call(this);
+
+  //]]>
+</script>
+  </body>
+</html>
